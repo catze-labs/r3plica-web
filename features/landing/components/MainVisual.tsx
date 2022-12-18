@@ -13,33 +13,38 @@ const MainVisual = () => {
         minHeight: "calc(100vh - 80px)",
       }}
     >
-      <div className="flex flex-col xl:flex-row item-center gap-20">
+      <div className="flex flex-col xl:flex-row item-center gap-10 xl:gap-20">
         <div
           className="order-1 xl:order-2 w-full xl:w-1/2 object-cover flex justify-center"
           style={{
-            width: width > 600 ? 500 : 300,
-            height: width > 600 ? (500 * 486) / 916 : (300 * 486) / 916,
+            width: width > 600 ? 500 : 280,
+            height: width > 600 ? (500 * 486) / 916 : (280 * 486) / 916,
           }}
         >
           <Spline
             role="img"
             scene="https://prod.spline.design/V3NWprj2Q-9GVrUJ/scene.splinecode"
             style={{
-              width: width > 600 ? 500 : 300,
-              height: width > 600 ? (500 * 486) / 916 : (300 * 486) / 916,
+              width: width > 600 ? 500 : 190,
+              height: width > 600 ? (500 * 486) / 916 : (190 * 486) / 916,
             }}
           />
         </div>
         <div>
           <div className="w-full flex justify-center xl:justify-end mb-10">
-            <img src="/logo-big.png" width={282} height={80} alt="r3plica" />
+            <img
+              src="/logo-big.png"
+              width={width > 600 ? 282 : 141}
+              height={width > 600 ? 80 : 40}
+              alt="r3plica"
+            />
           </div>
 
-          <h1 className="text-3xl xl:text-5xl text-yellow text-center xl:text-right">
+          <h1 className="text-xl xl:text-5xl text-yellow text-center xl:text-right">
             Mirror Your Gaming Soul
           </h1>
 
-          <p className="text-xl pt-10 text-center xl:text-right whitespace-nowrap">
+          <p className="text-sm xl:text-xl pt-10 text-center xl:text-right whitespace-nowrap">
             Copy or record the profile, items,{" "}
             <br className="block xl:hidden" />
             and other status of a web2 gamer
