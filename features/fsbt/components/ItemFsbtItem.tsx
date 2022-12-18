@@ -15,7 +15,7 @@ const ItemFsbtItem: React.FC<{
         >
           {itemTransfer?.txHash || ""}
         </a>
-        <span className="text-sm">{itemTransfer.updated}</span>
+        <span className="text-sm">{itemTransfer.updated.slice(0, 10)}</span>
       </div>
       <div>
         {itemTransfer?.txStatus === null && (
