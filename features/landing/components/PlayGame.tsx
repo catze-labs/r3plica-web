@@ -39,7 +39,7 @@ const PlayGame = () => {
               <a
                 rel="noopener noreferrer"
                 className="flex gap-2 rounded p-2 bg-black-dark"
-                href="https://kup.fra1.digitaloceanspaces.com/win/unity-39-develop-chop-chop-kup-main-win-7.zip"
+                href="https://r3plica.nyc3.digitaloceanspaces.com/win/r3plica-unity-r3plica-prod-win-1.zip"
               >
                 <img
                   src="/landing/icon-window.svg"
@@ -59,7 +59,7 @@ const PlayGame = () => {
               <a
                 rel="noopener noreferrer"
                 className="flex gap-2 rounded p-2 bg-black-dark"
-                href="https://kup.fra1.digitaloceanspaces.com/win/unity-39-develop-chop-chop-kup-main-win-7.zip"
+                href="https://r3plica.nyc3.digitaloceanspaces.com/mac/r3plica-unity-r3plica-prod-mac-1.zip"
               >
                 <img
                   src="/landing/icon-mac.svg"
