@@ -41,7 +41,7 @@ const AchievementList: React.FC<AchievementListProps> = ({
               key={item.questID}
               className={clsx([
                 "flex items-start gap-4",
-                item?.state === QuestState.OnGoing && "opacity-50",
+                item?.state !== QuestState.TurnedIn && "opacity-50",
                 idx !== list.length - 1 && "pb-8 mb-8 border-b border-white",
               ])}
             >

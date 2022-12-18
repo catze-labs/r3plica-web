@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import AssetBox from "@/components/AssetBox";
 import Button from "@/components/Button";
 import { useRouter } from "next/router";
