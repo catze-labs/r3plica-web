@@ -81,6 +81,11 @@ const WalletConnectModal: React.FC<WalletConnectModalProps> = ({
               Download Chrome Extension
             </a>
           </div>
+          <div>
+            <p className="text-xs text-center text-yellow">
+              If you install binance wallet, Please refresh(F5) this page
+            </p>
+          </div>
         </div>
       )}
       {account && !signature && (
