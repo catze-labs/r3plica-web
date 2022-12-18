@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
-import Link from "next/link";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -99,6 +98,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#1E2328"></meta>
       </Head>
+
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <ToastContainer />
