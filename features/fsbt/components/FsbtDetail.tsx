@@ -18,7 +18,7 @@ const FsbtDetail = () => {
           alt="my fsbt"
           className="pointer-events-none mx-auto"
         />
-        <p className="text-center">Last updated: 2022-12-23</p>
+        <p className="text-center">Last updated: 2022-12-19</p>
       </div>
       <div className="flex gap-2.5">
         <Button onClick={() => router.push("/assets")}>Go to My Assets</Button>
