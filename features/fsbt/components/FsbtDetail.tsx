@@ -9,7 +9,7 @@ const FsbtDetail = () => {
   return (
     <AssetBox className="w-[450px]">
       <h1 className="text-3xl font-bold">
-        My <span className="tracking-wider">fSBT</span>
+        My <span className="tracking-widest">fSBT</span>
       </h1>
       <div className="p-8 flex flex-col justify-center gap-4">
         <img
@@ -24,7 +24,7 @@ const FsbtDetail = () => {
       <div className="flex gap-2.5">
         <Button onClick={() => router.push("/assets")}>Go to My Assets</Button>
         <Button className="bg-brown">
-          Show <span className="tracking-wider">fSBT</span> Information
+          Show <span className="tracking-widest">fSBT</span> Information
         </Button>
       </div>
     </AssetBox>

@@ -58,7 +58,7 @@ const Transfering: React.FC<TransferingProps> = ({
       <p className="text-sm text-center">
         {isLoading ? (
           <>
-            We are transfering <span className="tracking-wider">fSBT</span> to
+            We are transfering <span className="tracking-widest">fSBT</span> to
             your wallet. <br />
             Please wait until transfering is done
           </>

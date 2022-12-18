@@ -19,7 +19,7 @@ const DesktopMenuList = () => {
             <li>
               <Link href="/fsbt">
                 <a className="hover:underline">
-                  My <span className="tracking-wider">fSBT</span>
+                  My <span className="tracking-widest">fSBT</span>
                 </a>
               </Link>
             </li>
