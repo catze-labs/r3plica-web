@@ -47,6 +47,7 @@ export function useTransfer(
   const { transfer } = useTransferAPI();
 
   const { mutate, isLoading } = useMutation(
+    "transfer",
     (payload: Transfer.Payload) => transfer(payload),
     {
       onSuccess,
