@@ -39,6 +39,7 @@ const AssetPage = () => {
         </div>
       </AssetBox>
       <InformationModal
+        className="w-[420px]"
         title={
           <>
             What is <span className="tracking-widest">fSBT</span>?

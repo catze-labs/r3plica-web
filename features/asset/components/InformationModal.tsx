@@ -6,13 +6,9 @@ const InformationModal: React.FC<ModalProps> = ({ ...props }) => {
   return (
     <Modal {...props}>
       <p className="p-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        fSBT refers to an SBT that can be transacted only n times. Original SBT
+        is a token with no transmission possibility at all, but fSBT is a form
+        that changes to SBT after transaction.
       </p>
       <Button onClick={() => props.onClose?.()}>Got it!</Button>
     </Modal>

@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
+import NoSSR from "@/components/NoSSR";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -102,7 +103,9 @@ function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <ToastContainer />
-          <Component {...pageProps} />
+          <NoSSR>
+            <Component {...pageProps} />
+          </NoSSR>
         </QueryClientProvider>
       </RecoilRoot>
     </>

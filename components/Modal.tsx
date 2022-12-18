@@ -46,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
           className,
         ])}
       >
-        <div className="bg-gray-dark px-10 pt-14 pb-7 rounded-lg flex flex-col gap-8 relative">
+        <div className="bg-gray-dark px-5 max-w-[100%] sm:px-10 pt-14 pb-7 rounded-lg flex flex-col gap-8 relative">
           <CloseButton onClick={() => onClose?.()} />
           <h2 className="text-2xl font-bold min-w-[320px] text-center text-yellow">
             {title}
