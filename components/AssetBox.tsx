@@ -9,7 +9,7 @@ const AssetBox: React.FC<ComponentProps<"div">> = ({
   return (
     <div
       className={clsx([
-        "bg-gray-dark p-10 gap-8 rounded-lg max-w-[800px] w-full",
+        "bg-gray-dark p-4 sm:p-10 gap-8 rounded-lg max-w-[800px] w-full",
         className,
       ])}
     >

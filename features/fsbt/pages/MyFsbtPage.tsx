@@ -1,10 +1,10 @@
 import Layout from "@/components/Layout";
-import FsbtDetail from "../components/FsbtDetail";
+import FsbtList from "../components/FsbtList";
 
 const MyFsbtPage = () => {
   return (
     <Layout mainCentered>
-      <FsbtDetail />
+      <FsbtList />
     </Layout>
   );
 };

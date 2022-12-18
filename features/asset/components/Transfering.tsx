@@ -86,7 +86,10 @@ const Transfering: React.FC<TransferingProps> = ({
               : "Pending..."}
           </Button>
           {txStatus === TxStatus.Success && (
-            <Button className="px-4" onClick={() => router.push("/fsbt")}>
+            <Button
+              className="px-4 bg-brown"
+              onClick={() => router.push("/fsbt")}
+            >
               Show My SBT
             </Button>
           )}

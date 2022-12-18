@@ -28,12 +28,34 @@ interface achievementTransferHistoryItem {
   updated: string;
 }
 
-interface HistoryList {
+interface TxHistory {
+  id: number;
+  txHash: string;
+  playFabId: string;
+  tokenId: string;
+  contractAddress: string;
+  created: string;
+  updated: string;
+}
+
+interface ProfileTransferHistoryItem extends TxHistory {
+  profile: unknown;
+}
+interface ItemTransferHistoryItem extends TxHistory {
+  item: unknown;
+}
+interface AchievementTransferHistoryItem extends TxHistory {
+  achievement: unknown;
+}
+
+interface TransferHistoryList {
+  profileTransfers: ProfileTransferHistoryItem[];
   itemTransfers: ItemTransferHistoryItem[];
-  achievementTransfers;
+  achievementTransfers: AchievementTransferHistoryItem[];
 }
 
 declare namespace Transfer {
   type Payload = TransferPayload;
   type Response = TransferResponse;
+  type HistoryList = TransferHistoryList;
 }

@@ -1,3 +1,4 @@
+import { useSession } from "@/states/session";
 import axios from "axios";
 import { useMutation, useQuery } from "react-query";
 import client from "./client";
@@ -17,7 +18,26 @@ export const useTransferAPI = () => {
     }
   };
 
-  return { transfer };
+  const fetchTransferHistory = async (sessionTicket: string) => {
+    try {
+      const { data } = await client.get<Transfer.HistoryList>(
+        "/transfer-history",
+        {
+          params: {
+            sessionTicket,
+          },
+        }
+      );
+
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return Promise.reject(error.response?.data);
+      }
+    }
+  };
+
+  return { transfer, fetchTransferHistory };
 };
 
 export function useTransfer(
@@ -35,4 +55,20 @@ export function useTransfer(
   );
 
   return { mutate, isLoading };
+}
+
+export function useTransferHistory() {
+  const { session } = useSession();
+  const { fetchTransferHistory } = useTransferAPI();
+
+  const { data, isLoading, error } = useQuery(
+    ["transfer", "history", session],
+    () => fetchTransferHistory(session?.sessionTicket ?? ""),
+    {
+      enabled: !!session?.sessionTicket,
+      refetchInterval: 3000,
+    }
+  );
+
+  return { data, isLoading, error };
 }

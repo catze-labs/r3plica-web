@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ mainCentered = true, children }) => {
       <main
         className={clsx([
           "h-full w-full grow",
-          mainCentered && "flex justify-center items-center p-10",
+          mainCentered && "flex justify-center items-center p-4 sm:p-10",
         ])}
       >
         {children}
