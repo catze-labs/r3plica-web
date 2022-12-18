@@ -17,10 +17,10 @@ interface ItemTransferHistoryItem {
   updated: string;
 }
 
-interface entitlementTransferHistoryItem {
+interface achievementTransferHistoryItem {
   id: number;
   txHash: string;
-  entitlement: unknown;
+  achievement: unknown;
   playFabId: string;
   tokenId: string;
   contractAddress: string;
@@ -30,7 +30,7 @@ interface entitlementTransferHistoryItem {
 
 interface HistoryList {
   itemTransfers: ItemTransferHistoryItem[];
-  entitlementTransfers;
+  achievementTransfers;
 }
 
 declare namespace Transfer {

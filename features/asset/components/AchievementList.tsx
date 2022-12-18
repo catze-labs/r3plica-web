@@ -1,28 +1,28 @@
 import NoSSR from "@/components/NoSSR";
-import { useEntitlements } from "@/requests/assets";
+import { useAchievements } from "@/requests/assets";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { QuestState } from "../constants";
 
-interface EntitlementListProps {
+interface AchievementListProps {
   confirmMode?: boolean;
-  onSelected?: (entitles: number[]) => void;
+  onSelected?: (achievements: number[]) => void;
 }
 
-const EntitlementList: React.FC<EntitlementListProps> = ({
+const AchievementList: React.FC<AchievementListProps> = ({
   confirmMode = false,
   onSelected = () => {},
 }) => {
-  const { data, isLoading } = useEntitlements();
+  const { data, isLoading } = useAchievements();
 
   const list = data?.achievements;
 
-  const [selectedEntitlement, setSelectedEntitlement] = useState<number[]>([]);
+  const [selectedAchievement, setSelectedAchievement] = useState<number[]>([]);
 
   useEffect(() => {
-    onSelected?.(selectedEntitlement);
-  }, [selectedEntitlement]);
+    onSelected?.(selectedAchievement);
+  }, [selectedAchievement]);
 
   return (
     <NoSSR>
@@ -50,7 +50,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
                   <CheckCircleIcon
                     className={clsx([
                       "w-6",
-                      selectedEntitlement.includes(item.questID) &&
+                      selectedAchievement.includes(item.questID) &&
                         "text-yellow",
                     ])}
                   />
@@ -63,19 +63,19 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
                   confirmMode
                     ? "cursor-pointer hover:bg-[rgba(255,255,255,0.1)]"
                     : "cursor-default",
-                  selectedEntitlement.includes(item.questID) &&
+                  selectedAchievement.includes(item.questID) &&
                     "bg-[rgba(255,255,255,0.1)] text-yellow",
                 ])}
                 onClick={() => {
                   if (!confirmMode) return;
 
-                  if (selectedEntitlement.includes(item.questID)) {
-                    setSelectedEntitlement(
-                      selectedEntitlement.filter((id) => id !== item.questID)
+                  if (selectedAchievement.includes(item.questID)) {
+                    setSelectedAchievement(
+                      selectedAchievement.filter((id) => id !== item.questID)
                     );
                   } else {
-                    setSelectedEntitlement([
-                      ...selectedEntitlement,
+                    setSelectedAchievement([
+                      ...selectedAchievement,
                       item.questID,
                     ]);
                   }
@@ -88,7 +88,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
           ))}
           {!isLoading && !list?.length && (
             <li className="flex flex-col gap-2">
-              <p className="text-lg font-bold">No Entitlement</p>
+              <p className="text-lg font-bold">No Achievement</p>
             </li>
           )}
         </ul>
@@ -96,4 +96,4 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
     </NoSSR>
   );
 };
-export default EntitlementList;
+export default AchievementList;

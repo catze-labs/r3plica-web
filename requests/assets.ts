@@ -23,9 +23,9 @@ export const useAssetsAPI = () => {
     }
   };
 
-  const fetchEntitlements = async (sessionTicket: string) => {
+  const fetchAchievements = async (sessionTicket: string) => {
     try {
-      const { data } = await client.get<Assets.Entitlements.Response>(
+      const { data } = await client.get<Assets.Achievements.Response>(
         "/playfab/achievements",
         {
           params: {
@@ -44,7 +44,7 @@ export const useAssetsAPI = () => {
 
   return {
     fetchInventory,
-    fetchEntitlements,
+    fetchAchievements,
   };
 };
 
@@ -67,13 +67,13 @@ export function useInventory() {
   };
 }
 
-export function useEntitlements() {
+export function useAchievements() {
   const { session } = useSession();
-  const { fetchEntitlements } = useAssetsAPI();
+  const { fetchAchievements } = useAssetsAPI();
 
   const { data, isLoading, error } = useQuery(
-    ["entitlements", session],
-    () => fetchEntitlements(session?.sessionTicket ?? ""),
+    ["achievements", session],
+    () => fetchAchievements(session?.sessionTicket ?? ""),
     {
       enabled: !!session?.sessionTicket,
     }

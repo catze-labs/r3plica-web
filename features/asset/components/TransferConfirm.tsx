@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import AssetBox from "../../../components/AssetBox";
 import AssetList from "./AssetList";
-import EntitlementList from "./EntitlementList";
+import AchievementList from "./AchievementList";
 
 interface TransferConfirmProps {
   onConfirmSuccess?: (confirmed: Transfer.Payload) => void;
@@ -54,12 +54,12 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
               }));
             }}
           />
-          <EntitlementList
+          <AchievementList
             confirmMode
-            onSelected={(entitles: number[]) => {
+            onSelected={(achievements: number[]) => {
               setSelectedAsset((prev) => ({
                 ...prev,
-                achievementIds: entitles,
+                achievementIds: achievements,
               }));
             }}
           />

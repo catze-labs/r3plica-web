@@ -18,7 +18,7 @@ interface Item {
   } | null;
 }
 
-interface Entitlement {
+interface Achievement {
   questID: number;
   questName: string;
   description: string;
@@ -35,7 +35,7 @@ interface Entitlement {
 
 type InventoryResponse = { items: Item[] };
 
-type EntitlementsResponse = { achievements: Entitlement[] };
+type AchievementsResponse = { achievements: Achievement[] };
 
 declare namespace Assets {
   namespace Inventory {
@@ -43,8 +43,8 @@ declare namespace Assets {
     type Response = InventoryResponse;
   }
 
-  namespace Entitlements {
-    type Entitlement = Entitlement;
-    type Response = EntitlementsResponse;
+  namespace Achievements {
+    type Achievement = Achievement;
+    type Response = AchievementsResponse;
   }
 }

@@ -1,6 +1,5 @@
 ![image](https://user-images.githubusercontent.com/65929678/208289087-4f1061e8-5e23-4b9a-8609-64c52e7d9640.png)
 
-
 # r3plica-web
 
 The r3plica front end implements three key features.
@@ -36,7 +35,7 @@ A scalable structure is recommended to consider the addition and change of vario
 | landing      | Landing page components                                     |
 | auth         | Login, Signup                                               |
 | wallet       | Wallet Connect Modal, Sign Message Modal                    |
-| asset        | Inventory, Entitlements from Playfab                        |
+| asset        | Inventory, Achievements from Playfab                        |
 | fsbt         | fSBT information which is transferred to the user's wallet. |
 
 Each of the above features contains the components used in the feature, the pages to be routed, and the various hooks.
