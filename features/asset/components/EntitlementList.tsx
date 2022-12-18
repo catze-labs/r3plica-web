@@ -16,7 +16,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
 }) => {
   const { data, isLoading } = useEntitlements();
 
-  const list = data?.list;
+  const list = data?.entitlements;
 
   const [selectedEntitlement, setSelectedEntitlement] = useState<number[]>([]);
 
@@ -55,7 +55,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
                 </div>
               )}
               <button
-                disabled={!confirmMode}
+                disabled={!confirmMode && item?.state !== QuestState.TurnedIn}
                 className={clsx([
                   "flex flex-col gap-2 w-full p-2 rounded",
                   confirmMode

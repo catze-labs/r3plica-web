@@ -5,7 +5,7 @@ interface Item {
   rdmItemID: number;
   state: number;
   gainDate: string;
-  rarity: "epic" | "legendary";
+  rarity: "Epic" | "Legendary";
   enchantmentID: number;
   enchantmentTierIndex: number;
   sockets: unknown[];
@@ -33,9 +33,9 @@ interface Entitlement {
   } | null;
 }
 
-type InventoryResponse = ListResponse<Item>;
+type InventoryResponse = { items: Item[] };
 
-type EntitlementsResponse = ListResponse<Entitlement>;
+type EntitlementsResponse = { entitlements: Entitlement[] };
 
 declare namespace Assets {
   namespace Inventory {

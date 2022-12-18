@@ -14,7 +14,7 @@ const AssetList: React.FC<AssetListProps> = ({
 }) => {
   const { data } = useInventory();
 
-  const list = data?.list;
+  const list = data?.items;
 
   /**
    * get unique item id only recent one (by gainDate)

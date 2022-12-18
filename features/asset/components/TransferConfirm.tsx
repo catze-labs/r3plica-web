@@ -1,33 +1,31 @@
 import Button from "@/components/Button";
+import { useSession } from "@/states/session";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import AssetBox from "./AssetBox";
 import AssetList from "./AssetList";
 import EntitlementList from "./EntitlementList";
 
-type MockAssetPayload = {
-  inventory: number[];
-  entitlement: number[];
-};
-
 interface TransferConfirmProps {
-  onConfirmSuccess?: (confirmed: MockAssetPayload) => void;
+  onConfirmSuccess?: (confirmed: Transfer.Payload) => void;
 }
 
 const TransferConfirm: React.FC<TransferConfirmProps> = ({
   onConfirmSuccess,
 }) => {
-  const [selectedAsset, setSelectedAsset] = useState<MockAssetPayload>({
-    inventory: [],
-    entitlement: [],
+  const { session } = useSession();
+  const [selectedAsset, setSelectedAsset] = useState<
+    Omit<Transfer.Payload, "sessionTicket">
+  >({
+    itemIds: [],
+    entitlementIds: [],
   });
 
   const handleConfirm = () => {
-    console.log(selectedAsset);
-
+    console.log("📲 TransferConfirm:", selectedAsset);
     if (
-      selectedAsset.inventory.length === 0 &&
-      selectedAsset.entitlement.length === 0
+      selectedAsset.itemIds.length === 0 &&
+      selectedAsset.entitlementIds.length === 0
     ) {
       toast.warn("Please select at least one asset", {
         toastId: "transfer-confirm-error",
@@ -35,8 +33,10 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
       return;
     }
 
-    // TODO: call api to transfer asset
-    onConfirmSuccess?.(selectedAsset);
+    onConfirmSuccess?.({
+      sessionTicket: String(session?.sessionTicket),
+      ...selectedAsset,
+    });
   };
 
   return (
@@ -48,7 +48,7 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
           onSelected={(items: number[]) => {
             setSelectedAsset((prev) => ({
               ...prev,
-              inventory: items,
+              itemIds: items,
             }));
           }}
         />
@@ -57,7 +57,7 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
           onSelected={(entitles: number[]) => {
             setSelectedAsset((prev) => ({
               ...prev,
-              entitlement: entitles,
+              entitlementIds: entitles,
             }));
           }}
         />
