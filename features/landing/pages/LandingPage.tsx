@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import NoSSR from "@/components/NoSSR";
 import MainVisual from "../components/MainVisual";
 import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
@@ -13,13 +14,15 @@ export function getServerSideProps() {
 
 const LandingPage = () => {
   return (
-    <Layout mainCentered={false}>
-      <MainVisual />
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-    </Layout>
+    <NoSSR>
+      <Layout mainCentered={false}>
+        <MainVisual />
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
+      </Layout>
+    </NoSSR>
   );
 };
 
