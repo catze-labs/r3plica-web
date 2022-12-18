@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import AssetBox from "../components/AssetBox";
+import AssetBox from "../../../components/AssetBox";
 import AssetList from "../components/AssetList";
 import EntitlementList from "../components/EntitlementList";
 import InformationModal from "../components/InformationModal";

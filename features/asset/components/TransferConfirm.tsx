@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import { useSession } from "@/states/session";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import AssetBox from "./AssetBox";
+import AssetBox from "../../../components/AssetBox";
 import AssetList from "./AssetList";
 import EntitlementList from "./EntitlementList";
 
