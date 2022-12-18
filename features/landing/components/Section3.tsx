@@ -14,8 +14,8 @@ const Section3 = () => {
             fSBT stores other tokens.
           </h2>
           <p className="text-xl text-center xl:text-left">
-            You will know that the item you got while playing is NFT, <br />
-            after you connect your wallet.
+            After connecting your wallet, you will be able to notice that <br />
+            the item you obtained while playing is an NFT.
           </p>
         </div>
 

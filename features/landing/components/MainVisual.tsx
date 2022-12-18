@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Spline from "@splinetool/react-spline";
+import { useWindowSize } from "react-use";
 
 const MainVisual = () => {
+  const { width } = useWindowSize();
+
   return (
     <header
-      className="flex items-center justify-center flex-col xl:flex-row bg-black-dark"
+      className="flex items-center justify-center flex-col xl:flex-row bg-black-dark overflow-hidden"
       style={{
         minHeight: "calc(100vh - 80px)",
       }}
@@ -16,8 +19,8 @@ const MainVisual = () => {
             role="img"
             scene="https://prod.spline.design/V3NWprj2Q-9GVrUJ/scene.splinecode"
             style={{
-              width: 500,
-              height: (500 * 486) / 916,
+              width: width > 600 ? 500 : 300,
+              height: width > 600 ? (500 * 486) / 916 : (300 * 486) / 916,
             }}
           />
         </div>
@@ -31,10 +34,11 @@ const MainVisual = () => {
           </h1>
 
           <p className="text-xl pt-10 text-center xl:text-right whitespace-nowrap">
-            Copy or record the status of the web2 gamer&apos;s profile, item,
-            etc.
+            Copy or record the profile, items,{" "}
+            <br className="block xl:hidden" />
+            and other status of a web2 gamer
             <br />
-            on the web3 like a mirror
+            exactly like a mirror on web3
           </p>
         </div>
       </div>
