@@ -57,6 +57,7 @@ export function useInventory() {
     () => fetchInventory(session?.sessionTicket ?? ""),
     {
       enabled: !!session?.sessionTicket,
+      refetchInterval: 3000,
     }
   );
 
@@ -76,6 +77,7 @@ export function useAchievements() {
     () => fetchAchievements(session?.sessionTicket ?? ""),
     {
       enabled: !!session?.sessionTicket,
+      refetchInterval: 3000,
     }
   );
 
