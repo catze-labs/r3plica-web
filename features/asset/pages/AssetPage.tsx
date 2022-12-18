@@ -23,6 +23,10 @@ const AssetPage = () => {
           <AchievementList />
         </div>
         <div className="flex flex-col justify-end items-end">
+          <p className="text-sm text-gray-light mb-4">
+            If you have completed the quest, go to the NPC and press the
+            Complete button.
+          </p>
           <Button className="w-56" onClick={handleClickTransfer}>
             Transfer <span className="tracking-widest">fSBT</span> to my wallet
           </Button>
