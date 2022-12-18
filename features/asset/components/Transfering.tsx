@@ -23,12 +23,16 @@ const Transfering: React.FC<TransferingProps> = ({
 }) => {
   const router = useRouter();
 
-  const txHash =
-    "0x25d4cf0a317a2e23d985ff0e8321b62218c83fa9173551e06eb4229e6773a72f";
+  const txHash = transferResponse?.txHash || "";
 
   const { data: bscScan } = useFetchBscScanLoop(txHash);
 
-  const txStatus = bscScan?.result.status;
+  let txStatus = bscScan?.result.status;
+  const notOK = bscScan?.status !== "1";
+
+  if (notOK) {
+    txStatus = TxStatus.Failed;
+  }
 
   return (
     <div className="flex flex-col gap-8 items-center">
@@ -64,6 +68,11 @@ const Transfering: React.FC<TransferingProps> = ({
           </>
         ) : null}
       </p>
+      {txHash && (
+        <div className="p-3 bg-[rgba(255,255,255,0.2)] rounded-lg w-[300px] overflow-x-auto">
+          {txHash}
+        </div>
+      )}
 
       {!isLoading && (
         <div className="flex flex-col gap-2 w-full">

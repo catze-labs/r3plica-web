@@ -4,7 +4,9 @@ interface TransferPayload {
   achievementIds: number[];
 }
 
-type TransferResponse = unknown;
+type TransferResponse = {
+  txHash: string;
+};
 
 interface ItemTransferHistoryItem {
   id: number;

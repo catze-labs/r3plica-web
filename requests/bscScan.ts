@@ -22,7 +22,8 @@ export default function useFetchBscScanLoop(txHash: string) {
     ["bscScan", txHash],
     () => IntervalFetchBscScan({ txHash }),
     {
-      refetchInterval: 1000,
+      enabled: !!txHash,
+      refetchInterval: !txHash ? false : 2000,
     }
   );
 
