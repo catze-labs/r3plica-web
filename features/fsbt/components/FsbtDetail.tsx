@@ -23,7 +23,9 @@ const FsbtDetail = () => {
       </div>
       <div className="flex gap-2.5">
         <Button onClick={() => router.push("/assets")}>Go to My Assets</Button>
-        <Button className="bg-brown">Show fSBT Information</Button>
+        <Button className="bg-brown">
+          Show <span className="tracking-wider">fSBT</span> Information
+        </Button>
       </div>
     </AssetBox>
   );

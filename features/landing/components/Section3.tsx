@@ -11,7 +11,7 @@ const Section3 = () => {
       <div className="flex items-center gap-[65px] flex-col xl:flex-row w-full">
         <div className="flex flex-col gap-10 order-2 xl:order-2 w-full xl:w-1/2">
           <h2 className="text-xl xl:text-5xl text-yellow font-bold text-center xl:text-left">
-            fSBT stores other tokens.
+            <span className="tracking-wider">fSBT</span> stores other tokens.
           </h2>
           <p className="text-sm xl:text-xl text-center xl:text-left">
             After connecting your wallet, you will be able to notice that <br />

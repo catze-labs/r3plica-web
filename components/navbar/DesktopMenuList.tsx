@@ -18,7 +18,9 @@ const DesktopMenuList = () => {
           {session && (
             <li>
               <Link href="/fsbt">
-                <a className="hover:underline">My fSBT</a>
+                <a className="hover:underline">
+                  My <span className="tracking-wider">fSBT</span>
+                </a>
               </Link>
             </li>
           )}

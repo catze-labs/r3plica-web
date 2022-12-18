@@ -24,7 +24,7 @@ const AssetPage = () => {
         </div>
         <div className="flex flex-col justify-end items-end">
           <Button className="w-56" onClick={handleClickTransfer}>
-            Transfer fSBT to my wallet
+            Transfer <span className="tracking-wider">fSBT</span> to my wallet
           </Button>
           <a
             className="text-yellow text-base mt-4 hover:underline cursor-pointer"

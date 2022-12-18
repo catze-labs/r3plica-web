@@ -72,7 +72,7 @@ const MobileMenu = () => {
                     onClick={() => setOpen(false)}
                     className="w-full bg-transparent text-center h-12 rounded items-center flex justify-center hover:underline"
                   >
-                    My fSBT
+                    My <span className="tracking-wider">fSBT</span>
                   </a>
                 </Link>
               </li>
