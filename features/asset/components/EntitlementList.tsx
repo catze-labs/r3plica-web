@@ -16,7 +16,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
 }) => {
   const { data, isLoading } = useEntitlements();
 
-  const list = data?.entitlements;
+  const list = data?.achievements;
 
   const [selectedEntitlement, setSelectedEntitlement] = useState<number[]>([]);
 
@@ -27,7 +27,9 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
   return (
     <NoSSR>
       <article className="bg-[#383F46] pt-5 px-7 pb-20 w-full lg:grow rounded-lg">
-        <h2 className="text-brown text-2xl font-bold mb-[50px]">Entitlement</h2>
+        <h2 className="text-brown text-2xl font-bold mb-[50px]">
+          Achievements
+        </h2>
         <ul>
           {isLoading && (
             <li className="flex flex-col gap-2">
@@ -43,7 +45,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
                 idx !== list.length - 1 && "pb-8 mb-8 border-b border-white",
               ])}
             >
-              {confirmMode && (
+              {confirmMode && item?.state === QuestState.TurnedIn && (
                 <div className="pt-3">
                   <CheckCircleIcon
                     className={clsx([
@@ -55,7 +57,7 @@ const EntitlementList: React.FC<EntitlementListProps> = ({
                 </div>
               )}
               <button
-                disabled={!confirmMode && item?.state !== QuestState.TurnedIn}
+                disabled={!confirmMode || item?.state !== QuestState.TurnedIn}
                 className={clsx([
                   "flex flex-col gap-2 w-full p-2 rounded",
                   confirmMode

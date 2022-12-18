@@ -13,9 +13,12 @@ export default function Transfer() {
 
   const [confirmed, setConfirmed] = useState<Transfer.Payload | null>(null);
 
+  const [transferResponse, setTransferResponse] =
+    useState<Transfer.Response | null>(null);
+
   const { mutate, isLoading } = useTransfer(
     (res) => {
-      console.log("📲 Transfer:", res);
+      setTransferResponse(res);
     },
     (error) => {
       toast.error(error.message);
@@ -34,7 +37,12 @@ export default function Transfer() {
           />
         )}
 
-        {signSuccess && <Transfering isLoading={isLoading} />}
+        {signSuccess && (
+          <Transfering
+            isLoading={isLoading}
+            transferResponse={transferResponse}
+          />
+        )}
 
         <WalletConnectModal
           open={needWalletConnect}

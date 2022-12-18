@@ -1,7 +1,7 @@
 interface TransferPayload {
   sessionTicket: string;
   itemIds: number[];
-  entitlementIds: number[];
+  achievementIds: number[];
 }
 
 type TransferResponse = unknown;

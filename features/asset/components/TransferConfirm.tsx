@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import NoSSR from "@/components/NoSSR";
 import { useSession } from "@/states/session";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -18,14 +19,14 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
     Omit<Transfer.Payload, "sessionTicket">
   >({
     itemIds: [],
-    entitlementIds: [],
+    achievementIds: [],
   });
 
   const handleConfirm = () => {
     console.log("📲 TransferConfirm:", selectedAsset);
     if (
       selectedAsset.itemIds.length === 0 &&
-      selectedAsset.entitlementIds.length === 0
+      selectedAsset.achievementIds.length === 0
     ) {
       toast.warn("Please select at least one asset", {
         toastId: "transfer-confirm-error",
@@ -40,36 +41,38 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
   };
 
   return (
-    <AssetBox>
-      <h1 className="text-3xl font-bold mb-8">Select Item for Transfer</h1>
-      <div className="flex items-start gap-8 mb-[30px] flex-col lg:flex-row">
-        <AssetList
-          confirmMode
-          onSelected={(items: number[]) => {
-            setSelectedAsset((prev) => ({
-              ...prev,
-              itemIds: items,
-            }));
-          }}
-        />
-        <EntitlementList
-          confirmMode
-          onSelected={(entitles: number[]) => {
-            setSelectedAsset((prev) => ({
-              ...prev,
-              entitlementIds: entitles,
-            }));
-          }}
-        />
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button className="w-[216px]" onClick={handleConfirm}>
-            Confirm
-          </Button>
+    <NoSSR>
+      <AssetBox>
+        <h1 className="text-3xl font-bold mb-8">Select Item for Transfer</h1>
+        <div className="flex items-start gap-8 mb-[30px] flex-col lg:flex-row">
+          <AssetList
+            confirmMode
+            onSelected={(items: number[]) => {
+              setSelectedAsset((prev) => ({
+                ...prev,
+                itemIds: items,
+              }));
+            }}
+          />
+          <EntitlementList
+            confirmMode
+            onSelected={(entitles: number[]) => {
+              setSelectedAsset((prev) => ({
+                ...prev,
+                achievementIds: entitles,
+              }));
+            }}
+          />
         </div>
-      </div>
-    </AssetBox>
+        <div className="flex justify-end">
+          <div>
+            <Button className="w-[216px]" onClick={handleConfirm}>
+              Confirm
+            </Button>
+          </div>
+        </div>
+      </AssetBox>
+    </NoSSR>
   );
 };
 

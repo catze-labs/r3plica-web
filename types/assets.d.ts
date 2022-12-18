@@ -35,7 +35,7 @@ interface Entitlement {
 
 type InventoryResponse = { items: Item[] };
 
-type EntitlementsResponse = { entitlements: Entitlement[] };
+type EntitlementsResponse = { achievements: Entitlement[] };
 
 declare namespace Assets {
   namespace Inventory {

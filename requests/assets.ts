@@ -26,7 +26,7 @@ export const useAssetsAPI = () => {
   const fetchEntitlements = async (sessionTicket: string) => {
     try {
       const { data } = await client.get<Assets.Entitlements.Response>(
-        "/playfab/entitlements",
+        "/playfab/achievements",
         {
           params: {
             sessionTicket,

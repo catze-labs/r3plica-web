@@ -20,7 +20,7 @@ export const useWalletAPI = () => {
   const link = async (payload: Wallet.Link.Payload) => {
     try {
       const { data } = await client.patch<Wallet.Link.Response>(
-        "/playfab/link-wallet",
+        "/user/link-wallet",
         payload
       );
       return data;
