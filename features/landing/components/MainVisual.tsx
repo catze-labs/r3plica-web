@@ -22,7 +22,7 @@ const MainVisual = () => {
           />
         </div>
         <div>
-          <div className="w-full flex justify-center xl:justify-end">
+          <div className="w-full flex justify-center xl:justify-end mb-10">
             <img src="/logo-big.png" width={282} height={80} alt="r3plica" />
           </div>
 
