@@ -9,7 +9,7 @@ interface Item {
   enchantmentID: number;
   enchantmentTierIndex: number;
   sockets: unknown[];
-  isTransferred: boolean;
+  isTransferred: boolean | null; // null: Transaction Pending, true: Transaction Sent, false Transaction Failed
   transfer: {
     id: number;
     txHash: string;
