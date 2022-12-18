@@ -24,7 +24,9 @@ const FsbtList = () => {
             </li>
           )}
           {!isLoading &&
-            data?.itemTransfers?.map((item) => <ItemFsbtItem key={item.id} />)}
+            data?.itemTransfers?.map((item, idx) => (
+              <ItemFsbtItem key={idx} itemTransfer={item} />
+            ))}
           {!isLoading && data?.itemTransfers?.length === 0 && (
             <li className="text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               No Items.
@@ -38,8 +40,8 @@ const FsbtList = () => {
             </li>
           )}
           {!isLoading &&
-            data?.itemTransfers?.map((item) => (
-              <AchievementFsbtItem key={item.id} />
+            data?.itemTransfers?.map((item, idx) => (
+              <AchievementFsbtItem key={idx} itemTransfer={item} />
             ))}
           {!isLoading && data?.itemTransfers?.length === 0 && (
             <li className="text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
