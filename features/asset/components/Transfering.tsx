@@ -48,7 +48,7 @@ const Transfering: React.FC<TransferingProps> = ({
       </div>
       <h2 className="text-2xl font-bold text-center">
         {isLoading
-          ? "Transfering..."
+          ? "Transaction processing..."
           : txStatus === TxStatus.Failed
           ? "Transaction Failed"
           : txStatus === TxStatus.Pending
