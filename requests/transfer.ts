@@ -48,7 +48,8 @@ export function useTransfer(
 
   const { mutate, isLoading } = useMutation(
     "transfer",
-    (payload: Transfer.Payload) => transfer(payload),
+    (payload: Transfer.Payload) =>
+      transfer(payload) as Promise<Transfer.Response>,
     {
       onSuccess,
       onError,
