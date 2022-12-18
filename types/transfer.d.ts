@@ -38,6 +38,7 @@ interface TxHistory {
   contractAddress: string;
   created: string;
   updated: string;
+  txStatus: boolean | null;
 }
 
 interface ProfileTransferHistoryItem extends TxHistory {

@@ -3,7 +3,8 @@ import AssetBox from "@/components/AssetBox";
 import Button from "@/components/Button";
 import { useTransferHistory } from "@/requests/transfer";
 import { useRouter } from "next/router";
-import FsbtItem from "./FsbtItem";
+import ItemFsbtItem from "./ItemFsbtItem";
+import AchievementFsbtItem from "./AchievementFsbtItem";
 
 const FsbtList = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const FsbtList = () => {
             </li>
           )}
           {!isLoading &&
-            data?.itemTransfers?.map((item) => <FsbtItem key={item.id} />)}
+            data?.itemTransfers?.map((item) => <ItemFsbtItem key={item.id} />)}
           {!isLoading && data?.itemTransfers?.length === 0 && (
             <li className="text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               No Items.
@@ -37,7 +38,9 @@ const FsbtList = () => {
             </li>
           )}
           {!isLoading &&
-            data?.itemTransfers?.map((item) => <FsbtItem key={item.id} />)}
+            data?.itemTransfers?.map((item) => (
+              <AchievementFsbtItem key={item.id} />
+            ))}
           {!isLoading && data?.itemTransfers?.length === 0 && (
             <li className="text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               No Achievements.

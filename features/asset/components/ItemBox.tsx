@@ -23,6 +23,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({
   checkable,
   checked = false,
   onCheck,
+  transfer,
 }) => {
   return (
     <div
@@ -43,7 +44,13 @@ const ItemBox: React.FC<ItemBoxProps> = ({
       >
         {checkable && (
           <span className="text-white">
-            {!type ? "You don't have it" : isTransferred ? "Transferred" : null}
+            {!type
+              ? "You don't have it"
+              : isTransferred
+              ? "Transferred"
+              : transfer?.txStatus === ""
+              ? "Pending..."
+              : null}
           </span>
         )}
         {checkable && checked && (
