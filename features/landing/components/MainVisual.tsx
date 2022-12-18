@@ -14,7 +14,13 @@ const MainVisual = () => {
       }}
     >
       <div className="flex flex-col xl:flex-row item-center gap-20">
-        <div className="order-1 xl:order-2 w-full xl:w-1/2 object-cover flex justify-center">
+        <div
+          className="order-1 xl:order-2 w-full xl:w-1/2 object-cover flex justify-center"
+          style={{
+            width: width > 600 ? 500 : 300,
+            height: width > 600 ? (500 * 486) / 916 : (300 * 486) / 916,
+          }}
+        >
           <Spline
             role="img"
             scene="https://prod.spline.design/V3NWprj2Q-9GVrUJ/scene.splinecode"
