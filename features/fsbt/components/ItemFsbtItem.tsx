@@ -10,8 +10,10 @@ const ItemFsbtItem: React.FC<{
       </div>
       <div className="flex flex-col gap-2 grow items-start ">
         <a
+          rel="noreferrer"
           className="font-mono truncate w-[130px] hover:underline"
           href={`https://testnet.bscscan.com/tx/${itemTransfer?.txHash}`}
+          target="_blank"
         >
           {itemTransfer?.txHash || ""}
         </a>
