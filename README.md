@@ -2,7 +2,10 @@
 
 # r3plica-web
 
-The r3plica front end implements three key features.
+`r3plica` is a project born from BNB Chain Innovation Hackathon 2022 - Seoul, and this repository is the front-end of `r3plica` project.
+
+
+The r3plica-web implements these key features.
 
 - Sign in, sign up for authentication.
 - You can view the items obtained in the game and the entries obtained through the quests performed (defined as "My Assets") that are made of fSBT.
@@ -20,7 +23,7 @@ The r3plica front end implements three key features.
 | @binance-chain/bsc-connector | Interaction with Binance Wallet                               | https://www.npmjs.com/package/@binance-chain/bsc-connector |
 | tailwindcss                  | Utility-based CSS Library                                     | https://tailwindcss.com/                                   |
 
-The r3plica front end uses React.js (Next.js). In addition, Axios required for API calls is used by wrapping the functions provided by React-Query.
+The r3plica front-end uses React.js (Next.js). In addition, Axios required for API calls is used by wrapping the functions provided by React-Query.
 
 React-Query has the ability to cache responses from servers for a certain period of time and allows them to "invalidate" as needed, giving them the effect of calling only once, even if there are multiple API call codes. This reduces unnecessary duplicate API calls. In addition, it is easy to divide components because there are no restrictions on writing API call syntax.
 
@@ -28,7 +31,7 @@ Tailwindcss is a choice purely based on personal taste, and you can use a differ
 
 ## Project Structure
 
-A scalable structure is recommended to consider the addition and change of various features in the construction of the front-end project. At the front end of this fSBT, files are grouped in feature units.
+A scalable structure is recommended to consider the addition and change of various features in the construction of the front-end project. At the front-end of this fSBT, files are grouped in feature units.
 
 | Feature name | Usage                                                       |
 | ------------ | ----------------------------------------------------------- |
