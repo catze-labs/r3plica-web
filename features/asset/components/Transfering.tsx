@@ -25,14 +25,14 @@ const Transfering: React.FC<TransferingProps> = ({
 
   const txHash = transferResponse?.txHash || "";
 
-  const { data: bscScan } = useFetchBscScanLoop(txHash);
+  // const { data: bscScan } = useFetchBscScanLoop(txHash);
 
-  let txStatus = bscScan?.result.status;
-  const notOK = bscScan?.status !== "1";
+  // let txStatus = bscScan?.result.status;
+  // const notOK = bscScan?.status !== "1";
 
-  if (notOK) {
-    txStatus = TxStatus.Failed;
-  }
+  // if (notOK) {
+  //   txStatus = TxStatus.Failed;
+  // }
 
   return (
     <div className="flex flex-col gap-8 items-center">
@@ -44,20 +44,21 @@ const Transfering: React.FC<TransferingProps> = ({
       >
         {isLoading ? (
           <ArrowsUpDownIcon className="w-[50px] text-yellow animate-buoyancy-1" />
-        ) : txStatus === TxStatus.Failed ? (
-          <XMarkIcon className="w-[50px] text-red-500" />
         ) : (
+          // : txStatus === TxStatus.Failed ? (
+          // <XMarkIcon className="w-[50px] text-red-500" />
+          // ) :
           <CheckCircleIcon className="w-[50px] text-yellow" />
         )}
       </div>
       <h2 className="text-2xl font-bold text-center">
         {isLoading
           ? "Transaction processing..."
-          : txStatus === TxStatus.Failed
-          ? "Transaction Failed"
-          : txStatus === TxStatus.Pending
-          ? "Transaction is pending..."
-          : "Transaction is successfully sent."}
+          : // : txStatus === TxStatus.Failed
+            // ? "Transaction Failed"
+            // : txStatus === TxStatus.Pending
+            // ? "Transaction is pending..."
+            "Transaction is successfully sent."}
       </h2>
       <p className="text-sm text-center">
         {isLoading ? (
@@ -79,37 +80,45 @@ const Transfering: React.FC<TransferingProps> = ({
           <Button
             className={clsx([
               "px-4",
-              txStatus === TxStatus.Success && "bg-yellow",
-              txStatus === TxStatus.Failed && "bg-red-500 text-white",
-              txStatus === TxStatus.Pending && "bg-gray",
+              "bg-yellow",
+              // txStatus === TxStatus.Success && "bg-yellow",
+              // txStatus === TxStatus.Failed && "bg-red-500 text-white",
+              // txStatus === TxStatus.Pending && "bg-gray",
             ])}
-            disabled={txStatus === TxStatus.Pending}
+            // disabled={txStatus === TxStatus.Pending}
             onClick={() => {
-              window.open(`https://testnet.bscscan.com/tx/${txHash}`, "_blank");
+              // window.open(`https://testnet.bscscan.com/tx/${txHash}`, "_blank");
+              window.open(
+                `https://apothem.blocksscan.io/txs/0x3706f00bea11a41aab5d728169d401854d27605903122e2ea632cd5ca9228ab6#overview`,
+                "_blank"
+              );
             }}
           >
-            {txStatus === TxStatus.Success
-              ? "View on BscScan"
-              : txStatus === TxStatus.Failed
-              ? "Failed"
-              : "Pending..."}
+            {
+              // txStatus === TxStatus.Success
+              //   ?
+              "View on BlockScan"
+              // : txStatus === TxStatus.Failed
+              // ? "Failed"
+              //     : "Pending..."
+            }
           </Button>
-          {txStatus === TxStatus.Success && (
-            <Button
-              className="px-4 bg-brown"
-              onClick={() => router.push("/fsbt")}
-            >
-              Show My SBT
-            </Button>
-          )}
-          {txStatus === TxStatus.Failed && (
+          {/* {txStatus === TxStatus.Success && ( */}
+          <Button
+            className="px-4 bg-brown"
+            onClick={() => router.push("/fsbt")}
+          >
+            Show My SBT
+          </Button>
+          {/* )} */}
+          {/* {txStatus === TxStatus.Failed && (
             <a
               className="text-center text-sm text-red-500 hover:underline"
               href={`mailto:root-catze@catze.xyz?subject=Transaction Failed&body=Transaction : ${txHash}`}
             >
               Report Error
             </a>
-          )}
+          )} */}
         </div>
       )}
     </div>

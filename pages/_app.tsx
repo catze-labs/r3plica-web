@@ -9,6 +9,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import NoSSR from "@/components/NoSSR";
+import "@rainbow-me/rainbowkit/styles.css";
+
+import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
+import {
+  connectorsForWallets,
+  RainbowKitProvider,
+} from "@rainbow-me/rainbowkit";
+import { metaMaskWallet, coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
+import { publicProvider } from "wagmi/providers/public";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,6 +27,54 @@ const queryClient = new QueryClient({
       staleTime: 1000 * 5,
     },
   },
+});
+
+const { chains, provider } = configureChains(
+  [
+    {
+      id: 51,
+      name: "XDC Apothem Testnet",
+      network: "apothem",
+      nativeCurrency: {
+        name: "XDC",
+        symbol: "XDC",
+        decimals: 18,
+      },
+      rpcUrls: {
+        default: {
+          http: ["https://apothemxdcpayrpc.blocksscan.io/"],
+        },
+      },
+      blockExplorers: {
+        default: {
+          name: "Blocksscan",
+          url: "https://apothemxdcpayrpc.blocksscan.io/",
+        },
+      },
+      testnet: true,
+    },
+  ],
+  [publicProvider()]
+);
+
+// const { connectors } = getDefaultWallets({
+//   appName: "r3plica",
+//   chains,
+// });
+const connectors = connectorsForWallets([
+  {
+    groupName: "Wallets supporting XDC",
+    wallets: [
+      metaMaskWallet({ chains }),
+      coinbaseWallet({ appName: "r3plica", chains }),
+    ],
+  },
+]);
+
+const wagmiClient = createClient({
+  autoConnect: false,
+  connectors,
+  provider,
 });
 
 function App({ Component, pageProps }: AppProps) {
@@ -104,7 +161,15 @@ function App({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <ToastContainer />
           <NoSSR>
-            <Component {...pageProps} />
+            <WagmiConfig client={wagmiClient}>
+              <RainbowKitProvider
+                chains={chains}
+                modalSize="compact"
+                initialChain={51}
+              >
+                <Component {...pageProps} />
+              </RainbowKitProvider>
+            </WagmiConfig>
           </NoSSR>
         </QueryClientProvider>
       </RecoilRoot>

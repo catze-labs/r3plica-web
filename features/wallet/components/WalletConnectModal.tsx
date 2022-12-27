@@ -1,13 +1,14 @@
 import Button from "@/components/Button";
 import Modal, { ModalProps } from "@/components/Modal";
 import { useWalletAPI } from "@/requests/wallet";
-import { useSession } from "@/states/session";
+import { sessionAtom } from "@/states/session";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/solid";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import useBinanceWallet from "../hooks/useBinanceWallet";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { useSignMessage, useAccount, useDisconnect } from "wagmi";
 
 interface WalletConnectModalProps extends ModalProps {
   onSignSuccess?: (walletAddress: string, signature: string) => void;
@@ -17,98 +18,101 @@ const WalletConnectModal: React.FC<WalletConnectModalProps> = ({
   onSignSuccess,
   ...props
 }) => {
-  const { session } = useSession();
+  const session = useRecoilValue(sessionAtom);
+  const [nonce, setNonce] = useState<string>("");
+
   const { generateNonce, link } = useWalletAPI();
-  const { account, activate, sign } = useBinanceWallet();
+  const { openConnectModal } = useConnectModal();
+  const { address, isConnected, status } = useAccount();
+  const { disconnect } = useDisconnect();
+  const {
+    data: signature,
+    signMessage,
+    isSuccess: isSignSuccess,
+  } = useSignMessage({
+    message: nonce,
+    onSuccess: (signature) => {
+      if (!session?.sessionTicket || !address) return;
+      link({
+        sessionTicket: session?.sessionTicket,
+        walletAddress: address,
+        signature,
+      });
+    },
+  });
 
-  const [signature, setSignature] = useState<string | null>(null);
+  useEffect(() => {
+    if (!address) return;
 
-  const onSign = async () => {
-    const res = await generateNonce({ walletAddress: String(account) });
-    if (!res) {
-      toast.error("Fail to generate nonce");
-      return;
-    }
-    const _signature = await sign(res.nonce);
-
-    if (!_signature) {
-      toast.error("Fail to sign");
-      return;
-    }
-    // link to backend
-    link({
-      walletAddress: String(account),
-      signature: _signature,
-      sessionTicket: String(session?.sessionTicket),
+    generateNonce({
+      walletAddress: address,
+    }).then((res) => {
+      setNonce(res?.nonce || "");
     });
+  }, [address]);
 
-    setSignature(_signature);
-  };
+  useEffect(() => {
+    if (isConnected) return;
+
+    // add new chain
+    try {
+      window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: "0x33", // 51
+            chainName: "XDC Apothem Testnet",
+            nativeCurrency: {
+              name: "XDC",
+              symbol: "XDC",
+              decimals: 18,
+            },
+            rpcUrls: ["https://apothemxdcpayrpc.blocksscan.io/"],
+            blockExplorerUrls: ["https://apothemxdcpayrpc.blocksscan.io/"],
+          },
+        ],
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [isConnected]);
 
   return (
-    <Modal
-      {...props}
-      title={
-        !account
-          ? `Connect Wallet`
-          : !signature
-          ? `You need to sign message`
-          : `Wallet Connected!`
-      }
-    >
-      {!account && (
-        <div className="flex flex-col gap-5">
-          <button
-            className="w-[320px] bg-black-dark border border-yellow h-16 rounded-lg flex justify-center items-center gap-4"
-            onClick={activate}
-          >
-            <Image
-              src="/logo-binance.svg"
-              width={24}
-              height={24}
-              alt="BINANCE"
-            />
-            <span className="text-lg font-bold">BINANCE WALLET</span>
-          </button>
-          <div className="flex gap-4 justify-center">
-            <p>Have no wallet?</p>
-            <a
-              className="text-yellow hover:underline"
-              rel="noreferrer"
-              target="_blank"
-              href="https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp"
-            >
-              Download Chrome Extension
-            </a>
-          </div>
-          <div>
-            <p className="text-xs text-center text-yellow">
-              If you install binance wallet, Please refresh(F5) this page
-            </p>
-          </div>
-        </div>
+    <Modal {...props} title="Connect Wallet">
+      {!isConnected && (
+        <button
+          className="w-[320px] bg-black-dark border border-yellow h-16 rounded-lg flex justify-center items-center gap-4"
+          onClick={async () => {
+            disconnect();
+            openConnectModal?.();
+          }}
+        >
+          <Image src="/landing/logo-xdc.png" width={24} height={24} alt="XDC" />
+          <span className="text-lg font-bold">CONNECT WALLET</span>
+        </button>
       )}
-      {account && !signature && (
+      {isConnected && !signature && (
         <div className="flex flex-col gap-5">
           <div className="flex justify-center items-center gap-4">
             <Image
-              src="/logo-binance.svg"
+              src="/landing/logo-xdc.png"
               width={48}
               height={48}
-              alt="BINANCE"
+              alt="XDC"
             />
             <PencilIcon className="w-6 text-yellow animate-buoyancy-1" />
           </div>
-          <Button onClick={onSign}>Sign</Button>
+          <Button onClick={() => signMessage()}>Sign</Button>
         </div>
       )}
-
-      {account && signature && (
+      {isConnected && isSignSuccess && (
         <div className="flex flex-col gap-5">
           <div className="flex justify-center pb-2">
             <CheckCircleIcon className="w-14 text-yellow" />
           </div>
-          <Button onClick={() => onSignSuccess?.(account, signature)}>
+          <Button
+            onClick={() => onSignSuccess?.(address || "", signature || "")}
+          >
             Start Transfer
           </Button>
         </div>

@@ -19,7 +19,7 @@ const CloseButton: React.FC<ComponentProps<"button">> = ({
 }) => (
   <button
     className={clsx([
-      "absolute top-4 right-4 w-8 h-8 flex justify-center items-center bg-gray-light",
+      "absolute top-4 right-4 w-8 h-8 flex justify-center items-center",
       className,
     ])}
     {...props}

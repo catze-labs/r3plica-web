@@ -14,17 +14,17 @@ module.exports = {
       colors: {
         ...colors,
         black: {
-          dark: "#0C0E12",
+          dark: "#2A3140",
           DEFAULT: "#1E2328",
         },
         gray: {
           DEFAULT: "#A3A3A3",
-          light: "EAECEF",
-          dark: "#292E33",
+          light: "#B7B5B1",
+          dark: "#272D35",
         },
-        yellow: "#F2D74C",
-        orange: "#FF7914",
-        brown: "#C6A150",
+        yellow: "#8EBAFB",
+        orange: "#174FE2",
+        brown: "#7681DE",
       },
       fontFamily: {
         sans: ["Rosario", ...fontFamily.sans],
