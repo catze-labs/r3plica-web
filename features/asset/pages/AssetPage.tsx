@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AssetBox from "../../../components/AssetBox";
-import AssetList from "../components/AssetList";
+import InventoryList from "../components/InventoryList";
 import AchievementList from "../components/AchievementList";
 import InformationModal from "../components/InformationModal";
 
@@ -19,7 +19,7 @@ const AssetPage = () => {
       <AssetBox>
         <h1 className="text-3xl font-bold mb-8">My Assets</h1>
         <div className="flex items-start gap-8 mb-[30px] flex-col lg:flex-row">
-          <AssetList />
+          <InventoryList />
           <AchievementList />
         </div>
         <div className="flex flex-col justify-end items-end">

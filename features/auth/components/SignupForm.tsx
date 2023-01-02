@@ -62,7 +62,8 @@ const SignupForm = () => {
           />
           <Button
             type="submit"
-            disabled={isLoading || Object.keys(errors).length > 0}
+            loading={isLoading}
+            disabled={Object.keys(errors).length > 0}
           >
             Submit
           </Button>

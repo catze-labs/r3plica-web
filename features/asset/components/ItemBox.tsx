@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Image from "next/image";
 
 interface ItemBoxProps {
+  loading?: boolean;
   itemID: number;
   alt?: string;
   type: "epic" | "legendary";
@@ -12,9 +13,11 @@ interface ItemBoxProps {
   checkable?: boolean;
   onCheck?: (itemID: number) => void;
   className?: string;
+  isTokenized?: boolean;
 }
 
 const ItemBox: React.FC<ItemBoxProps> = ({
+  loading,
   itemID,
   alt,
   className,
@@ -24,6 +27,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({
   checked = false,
   onCheck,
   transfer,
+  isTokenized,
 }) => {
   return (
     <div
@@ -36,21 +40,26 @@ const ItemBox: React.FC<ItemBoxProps> = ({
       <button
         className={clsx([
           "absolute top-0 left-0 z-20 w-full h-full bg-transparent rounded-lg flex justify-center items-center",
-          (!type || isTransferred) && "cursor-default bg-[rgba(0,0,0,0.5)]",
+          (!isTokenized || isTransferred) &&
+            "cursor-default bg-[rgba(0,0,0,0.5)]",
           checkable && checked && "bg-[rgba(0,0,0,0.5)] border-2 border-yellow",
         ])}
         disabled={isTransferred}
         onClick={() => onCheck?.(itemID)}
       >
         {checkable && (
-          <span className="text-white">
-            {!type
-              ? "You don't have it"
-              : isTransferred
-              ? "Transferred"
-              : transfer?.txStatus === ""
-              ? "Pending..."
-              : null}
+          <span className="text-white text-sm">
+            {loading ? (
+              "Loading..."
+            ) : !isTokenized ? (
+              <>
+                Not tokenized
+                <br />
+                Please wait...
+              </>
+            ) : isTransferred ? (
+              "Transferred"
+            ) : null}
           </span>
         )}
         {checkable && checked && (

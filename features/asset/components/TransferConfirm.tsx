@@ -4,7 +4,7 @@ import { useSession } from "@/states/session";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import AssetBox from "../../../components/AssetBox";
-import AssetList from "./AssetList";
+import InventoryList from "./InventoryList";
 import AchievementList from "./AchievementList";
 
 interface TransferConfirmProps {
@@ -45,7 +45,7 @@ const TransferConfirm: React.FC<TransferConfirmProps> = ({
       <AssetBox>
         <h1 className="text-3xl font-bold mb-8">Select Item for Transfer</h1>
         <div className="flex items-start gap-8 mb-[30px] flex-col lg:flex-row">
-          <AssetList
+          <InventoryList
             confirmMode
             onSelected={(items: number[]) => {
               setSelectedAsset((prev) => ({

@@ -8,11 +8,11 @@ interface AssetListProps {
   onSelected?: (items: Assets.Inventory.Item[]) => void;
 }
 
-const AssetList: React.FC<AssetListProps> = ({
+const InventoryList: React.FC<AssetListProps> = ({
   confirmMode = false,
   onSelected = () => {},
 }) => {
-  const { data } = useInventory();
+  const { data, isLoading } = useInventory();
 
   const list = data?.items;
 
@@ -45,6 +45,7 @@ const AssetList: React.FC<AssetListProps> = ({
   const onItemCheck = (item: Assets.Inventory.Item, key: string) => {
     if (!item?.rarity) return;
     if (item?.isTransferred) return;
+    if (!item?.isTokenized) return;
     if (selectedItem.some((id) => id === Number(key))) {
       setSelectedItem(selectedItem.filter((id) => id !== Number(key)));
     } else {
@@ -62,6 +63,7 @@ const AssetList: React.FC<AssetListProps> = ({
             return (
               <div key={key}>
                 <ItemBox
+                  loading={isLoading}
                   checkable={confirmMode}
                   checked={selectedItem.some((id) => id === Number(key))}
                   onCheck={() => {
@@ -69,6 +71,7 @@ const AssetList: React.FC<AssetListProps> = ({
                   }}
                   itemID={Number(key)}
                   type={item?.rarity}
+                  isTokenized={item?.isTokenized}
                   isTransferred={item?.isTransferred}
                   transfer={item?.transfer}
                 />
@@ -81,4 +84,4 @@ const AssetList: React.FC<AssetListProps> = ({
   );
 };
 
-export default AssetList;
+export default InventoryList;

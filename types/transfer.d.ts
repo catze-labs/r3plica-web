@@ -5,7 +5,8 @@ interface TransferPayload {
 }
 
 type TransferResponse = {
-  txHash: string;
+  achievementTxHash: string;
+  itemTxHash: string;
 };
 
 interface ItemTransferHistoryItem {
