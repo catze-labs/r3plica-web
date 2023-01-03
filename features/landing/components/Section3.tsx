@@ -20,36 +20,27 @@ const Section3 = () => {
         </div>
 
         <div className="order-1 xl:order-1 w-full px-2 xl:w-1/2 flex justify-center xl:justify-end">
-          <div className="w-[250px] h-[315px] xl:w-[500px] xl:h-[320px] flex justify-between items-center relative">
-            <div className="-translate-y-10">
-              <Image
-                src="/landing/frog-saturated.png"
-                width={365}
-                height={583}
-                alt="section3"
-              />
-            </div>
-
+          <div className="w-[250px] h-[315px] xl:w-[600px] xl:h-[320px] flex justify-between items-center relative">
             <div className="translate-y-10">
               <Image
                 src="/landing/frog.png"
-                width={365}
-                height={583}
+                width={730}
+                height={631}
                 alt="section3"
               />
             </div>
 
             <div
               className={clsx([
-                "absolute bottom-0 left-1/2 -translate-x-1/2 xl:left-[230px] xl:-bottom-[82px] transition-opacity duration-500 ease-in-out cursor-pointer",
+                "absolute bottom-0 left-1/2 -translate-x-1/2 xl:left-[280px] xl:-bottom-[200px] transition-opacity duration-500 ease-in-out cursor-pointer",
                 !pop ? "opacity-100" : "opacity-0 pointer-events-none",
               ])}
               onClick={() => setPop(true)}
             >
               <img
                 src="/landing/gift.png"
-                width={259 / 2}
-                height={291 / 2}
+                width={310}
+                height={354}
                 alt="pop"
                 className="animate-buoyancy-1"
               />
@@ -57,15 +48,16 @@ const Section3 = () => {
 
             <div
               className={clsx([
-                "absolute w-[233px] -left-[10px] -bottom-[20px] xl:left-[100px] xl:-bottom-[90px] transition-opacity duration-500 ease-in-out cursor-pointer",
+                "absolute w-[242px] xl:w-[484px] -left-[10px] -bottom-[20px] xl:left-[10px] xl:-bottom-[240px] transition-opacity duration-500 ease-in-out cursor-pointer",
                 pop ? "opacity-100" : "opacity-0 pointer-events-none",
               ])}
               onClick={() => setPop(false)}
             >
               <img
                 src="/landing/pop.png"
-                width={932 / 4}
-                height={696 / 4}
+                className="w-full"
+                width={484}
+                height={350}
                 alt="pop"
               />
             </div>

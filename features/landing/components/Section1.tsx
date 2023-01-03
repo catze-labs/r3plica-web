@@ -20,8 +20,8 @@ const Section1 = () => {
         <div className="order-1 xl:order-1 w-1/2 flex justify-center xl:justify-end">
           <Image
             src="/landing/frog-card.png"
-            width={width > 600 ? 509 / 2 : 509 / 4}
-            height={width > 600 ? 805 / 2 : 805 / 4}
+            width={width > 600 ? 500 : 500 / 4}
+            height={width > 600 ? 628 : 628 / 4}
             alt="section1"
           />
         </div>

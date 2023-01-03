@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import React, { ComponentPropsWithRef } from "react";
 
-interface ButtonProps extends ComponentPropsWithRef<"button"> {}
+interface ButtonProps extends ComponentPropsWithRef<"button"> {
+  loading?: boolean;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, loading, ...props }, ref) => {
     return (
       <button
         {...props}
@@ -12,9 +14,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={clsx([
           "w-full flex justify-center items-center bg-yellow h-12 rounded-lg",
           className,
+          loading && "cursor-not-allowed animate-pulse",
         ])}
       >
-        <span className="text-black text-base">{children}</span>
+        <span className="text-black text-base">
+          {loading ? "Loading..." : children}
+        </span>
       </button>
     );
   }

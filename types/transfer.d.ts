@@ -5,13 +5,14 @@ interface TransferPayload {
 }
 
 type TransferResponse = {
-  txHash: string;
+  achievementTxHash: string;
+  itemTxHash: string;
 };
 
 interface ItemTransferHistoryItem {
   id: number;
   txHash: string;
-  item: unknown;
+  itemId: unknown;
   playFabId: string;
   tokenId: string;
   contractAddress: string;
