@@ -20,7 +20,7 @@ const Section2 = () => {
         </div>
         <div className="order-1 xl:order-2 w-full xl:w-1/2 flex justify-center xl:justify-start">
           <Vimeo
-            video="782172009"
+            video="785651635"
             muted
             controls={false}
             height="631px"

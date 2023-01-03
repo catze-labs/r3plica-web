@@ -83,7 +83,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({
           ])}
           style={{
             backgroundColor:
-              type === "epic"
+              type === "Epic"
                 ? "rgba(242, 215, 76, 0.8)"
                 : "rgba(255, 121, 20, 0.8)",
           }}

@@ -17,16 +17,17 @@ const MainVisual = () => {
         <div
           className="order-1 xl:order-2 w-full xl:w-1/2 object-cover flex justify-center"
           style={{
-            width: width > 600 ? 500 : 280,
-            height: width > 600 ? (500 * 486) / 916 : (280 * 486) / 916,
+            width: width > 640 ? 600 : 300,
+            height: width > 640 ? 330 : 155,
           }}
         >
           <Spline
             role="img"
-            scene="https://prod.spline.design/V3NWprj2Q-9GVrUJ/scene.splinecode"
+            scene="https://prod.spline.design/KiXaWONc6EZLurRi/scene.splinecode"
             style={{
-              width: width > 600 ? 500 : 190,
-              height: width > 600 ? (500 * 486) / 916 : (190 * 486) / 916,
+              width: width > 640 ? 600 : 300,
+              height: width > 640 ? 330 : 155,
+              zoom: width > 640 ? 1 : 0.5,
             }}
           />
         </div>

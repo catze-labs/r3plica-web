@@ -12,8 +12,8 @@ const Section4 = () => {
           <div className="flex justify-center xl:justify-end">
             <img
               src="/logo-big.png"
-              width={width > 600 ? 282 : 141}
-              height={width > 600 ? 80 : 40}
+              width={width > 660 ? 282 : 141}
+              height={width > 660 ? 80 : 40}
               alt="r3plica"
             />
           </div>
@@ -23,10 +23,14 @@ const Section4 = () => {
           </h2>
         </div>
 
-        <div className="order-1 xl:order-2 w-full px-2 xl:w-1/2 flex justify-center xl:justify-start h-[232px] xl:h-auto">
+        <div className="order-1 xl:order-2 w-full px-2 xl:w-1/2 flex justify-center xl:justify-start h-[232px] xl:h-[450px] xl:h-auto">
           <Spline
-            scene="https://prod.spline.design/8dZhoBxw1T0Kzajv/scene.splinecode"
-            width={width > 600 ? 420 : 300}
+            scene="https://prod.spline.design/OQscKGLO1DX6REIw/scene.splinecode"
+            width={width > 660 ? 646 : 323}
+            height={width > 660 ? 484 : 232}
+            style={{
+              zoom: width > 660 ? 1 : 0.5,
+            }}
           />
         </div>
       </div>
