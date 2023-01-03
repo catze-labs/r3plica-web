@@ -51,6 +51,8 @@ const ItemBox: React.FC<ItemBoxProps> = ({
           <span className="text-white text-sm">
             {loading ? (
               "Loading..."
+            ) : !type ? (
+              ""
             ) : !isTokenized ? (
               <>
                 Not tokenized
