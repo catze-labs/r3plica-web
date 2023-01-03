@@ -8,11 +8,10 @@ const AchievementFsbtItem: React.FC<{
       <div className="w-[30px]">
         <Image src="/fsbt.png" width={30} height={45} alt="sbt" />
       </div>
-      <div className="flex flex-col gap-2 grow items-start ">
+      <div className="flex flex-col gap-1 grow items-start ">
         <a
           rel="noreferrer"
           className="font-mono truncate w-[130px] hover:underline"
-          // href={`https://testnet.bscscan.com/tx/${itemTransfer?.txHash}`}
           href={`https://apothem.blocksscan.io/txs/${achievementTransfers?.txHash}`}
           target="_blank"
         >

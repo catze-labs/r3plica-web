@@ -6,7 +6,7 @@ interface ItemBoxProps {
   loading?: boolean;
   itemID: number;
   alt?: string;
-  type: "epic" | "legendary";
+  type: "Epic" | "Legendary";
   isTransferred?: boolean;
   transfer?: Assets.Inventory.Item["transfer"];
   checked?: boolean;

@@ -16,6 +16,7 @@ interface Item {
     tokenId: string | null;
     contractAddress: string;
   } | null;
+  isTokenized: boolean;
 }
 
 interface Achievement {

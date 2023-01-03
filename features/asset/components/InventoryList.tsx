@@ -42,7 +42,7 @@ const InventoryList: React.FC<AssetListProps> = ({
     onSelected?.(selectedItem);
   }, [selectedItem]);
 
-  const onItemCheck = (item: Assets.Inventory.Item, key: string) => {
+  const onItemCheck = (item: Assets.Inventory.Item, key: number) => {
     if (!item?.rarity) return;
     if (item?.isTransferred) return;
     if (!item?.isTokenized) return;
@@ -67,7 +67,7 @@ const InventoryList: React.FC<AssetListProps> = ({
                   checkable={confirmMode}
                   checked={selectedItem.some((id) => id === Number(key))}
                   onCheck={() => {
-                    onItemCheck(item, key);
+                    onItemCheck(item, Number(key));
                   }}
                   itemID={Number(key)}
                   type={item?.rarity}

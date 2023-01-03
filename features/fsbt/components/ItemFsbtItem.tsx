@@ -6,13 +6,17 @@ const ItemFsbtItem: React.FC<{
   return (
     <li className="bg-gray-dark px-4 py-2 rounded flex gap-4 items-center">
       <div className="w-[30px]">
-        <Image src="/assets/31.png" width={45} height={45} alt="sbt" />
+        <Image
+          src={`/assets/${itemTransfer.itemId}.png`}
+          width={45}
+          height={45}
+          alt="sbt"
+        />
       </div>
-      <div className="flex flex-col gap-2 grow items-start ">
+      <div className="flex flex-col gap-1 grow items-start ">
         <a
           rel="noreferrer"
           className="font-mono truncate w-[130px] hover:underline"
-          // href={`https://testnet.bscscan.com/tx/${itemTransfer?.txHash}`}
           href={`https://apothem.blocksscan.io/txs/${itemTransfer?.txHash}`}
           target="_blank"
         >

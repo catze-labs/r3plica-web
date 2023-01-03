@@ -12,7 +12,7 @@ type TransferResponse = {
 interface ItemTransferHistoryItem {
   id: number;
   txHash: string;
-  item: unknown;
+  itemId: unknown;
   playFabId: string;
   tokenId: string;
   contractAddress: string;
