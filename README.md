@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/65929678/208289087-4f1061e8-5e23-4b9a-8609-64c52e7d9640.png)
+![image](https://user-images.githubusercontent.com/65929678/210930652-7847adbb-aa5d-4407-a111-6b43f568742e.png)
+
 
 # r3plica-web
 
