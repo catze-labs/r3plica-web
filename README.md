@@ -2,9 +2,6 @@
 
 # r3plica-web
 
-`r3plica` is a project born from BNB Chain Innovation Hackathon 2022 - Seoul, and this repository is the front-end of `r3plica` project.
-
-
 The r3plica-web implements these key features.
 
 - Sign in, sign up for authentication.
@@ -20,7 +17,6 @@ The r3plica-web implements these key features.
 | Axios                        | Interaction with Server                                       | https://axios-http.com/                                    |
 | React-Query                  | Server state management and Server response cache utilization | https://react-query-v3.tanstack.com/                       |
 | Recoil                       | Global State Management                                       | ​​https://recoiljs.org/                                    |
-| @binance-chain/bsc-connector | Interaction with Binance Wallet                               | https://www.npmjs.com/package/@binance-chain/bsc-connector |
 | tailwindcss                  | Utility-based CSS Library                                     | https://tailwindcss.com/                                   |
 
 The r3plica front-end uses React.js (Next.js). In addition, Axios required for API calls is used by wrapping the functions provided by React-Query.
